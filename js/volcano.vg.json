@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 1280,
   "height": 960,
-  "title": "Volcanoes on earth in 2021",
+  "title": "Volcanoes and their magnitudes on earth in 2021",
   "projection": {"type": "equalEarth"},
   "layer": [
     {
@@ -42,7 +42,7 @@
           "title": "Magnitude (Richter scale)",
           "scale": {
             "type": "threshold",
-            "domain": [1000, 2000, 3000, 4000, 5000]}
+            "domain": [1000, 2000, 3000, 4000, 5000, 6000]}
         },
         "tooltip": [
           {"field": "Region", "type": "nominal"},
