@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1280,
+  "height": 960,
+  "title": "Volcanoes on earth in 2021",
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {
+        "url": "data/map.topojson.txt",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightslategrey", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "data/ocean.txt",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "skyblue"}
+    },
+    {
+      "data": {
+        "url": "data/graticules.txt",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    {
+      "data": {
+        "url": "data/volcanoes_2021.csv"
+      },
+      "mark": {"type": "circle", "tooltip": {"content": "data"},
+        "fill": "red"
+      },
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "size": {
+          "field": "Elevation",
+          "type": "quantitative",
+          "title": "Magnitude (Richter scale)",
+          "scale": {
+            "type": "threshold",
+            "domain": [1000, 2000, 3000, 4000, 5000]}
+        },
+        "tooltip": [
+          {"field": "Region", "type": "nominal"},
+          {"field": "Country", "type": "nominal"},
+          {"field": "Volcano Name", "type": "nominal"},
+          {"field": "Latitude", "type": "quantitative"},
+          {"field": "Longitude", "type": "quantitative"},
+          {"field": "Elevation", "type": "quantitative", "title": "Magnitude"}
+        ]
+      }
+    }
+  ]
+}
